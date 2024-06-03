@@ -1,0 +1,35 @@
+server:
+  port: 5050
+spring:
+  cloud:
+    # 配置网关
+    gateway:
+      routes: # 配置路由，可以有多个
+        # 比id: jiajv_renren_fast_router是更加精确的路由，所以应该将其放在它前面
+        - id: jiajv_commodity_router
+          uri: lb://jiajv-commodity
+          predicates:
+            - Path=/api/commodity/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment} # 重定向，去掉/api/这一截
+
+        - id: jiajv_service_router
+          uri: lb://jiajv-service
+          predicates:
+            - Path=/api/service/**
+          filters:
+            - RewritePath=/api/service/(?<segment>.*), /$\{segment} # 重定向，去掉/api/这一截
+
+        - id: jiajv_renren_fast_router # 路由id，由程序员指定，保证唯一
+          # 说明：如果到网关的请求是http://localhost:5050/commodity/brand/list ,gateway通过断言，最终将请求路由转发到
+          # http://localhost:9090/commodity/brand/list ==> url=uri+Path
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /renren-fast/$\{segment} # 重定向，去掉/api/这一截
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:65500
+  application:
+    name: jiajv-gateway

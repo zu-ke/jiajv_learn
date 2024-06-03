@@ -1,0 +1,25 @@
+# 下面注释的配置，放到了nacos上的jiajv-service命名空间中的配置列表里了，这里就可以注释了，增加bootstrap.properties配置
+#server:
+#  port: 7070
+#spring:
+#  # alibaba oss 参数
+#  cloud:
+#    alicloud:
+#      access-key: LTAI5t6qi9P6AUtE14AaM8Jo
+#      secret-key: BkRo83yD0j1OP2iyaF0C1WoO8Ya0xI
+#      oss:
+#        endpoint: oss-cn-chengdu.aliyuncs.com
+#        bucket: hsp-jiajv-100
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:65500 # nacos地址
+#  application:
+#    name: jiajv-service # 本模块在nacos中的注册名
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:65500 # nacos地址
+  application:
+    name: jiajv-service # 本模块在nacos中的注册名

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.zukedog</groupId>
+    <artifactId>jiajv</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>jiajv_renrenfast_learn</name>
+    <description>家居-继承聚合微服务模块</description>
+
+    <!-- 指定聚合管理的微服务模块 -->
+    <modules>
+        <module>jiajv-commodity</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>jiajv-common</module>
+        <module>jiajv-service</module>
+        <module>jiajv-gateway</module>
+    </modules>
+
+</project>
